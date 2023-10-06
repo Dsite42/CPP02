@@ -6,7 +6,7 @@
 /*   By: cgodecke <cgodecke@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 09:52:36 by cgodecke          #+#    #+#             */
-/*   Updated: 2023/10/05 16:45:42 by cgodecke         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:34:51 by cgodecke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ class Fixed
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 		float toFloat(void) const;
+		int toInt(void) const;
+
 };
+
+std::ostream &operator<<(std::ostream &os,  Fixed const &fixed);
 
 #endif

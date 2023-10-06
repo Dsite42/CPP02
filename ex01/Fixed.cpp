@@ -6,11 +6,12 @@
 /*   By: cgodecke <cgodecke@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 09:52:16 by cgodecke          #+#    #+#             */
-/*   Updated: 2023/10/05 16:56:10 by cgodecke         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:34:01 by cgodecke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <cmath>
 
 const int Fixed::_number_of_fractional_bits = 8;
 
@@ -21,15 +22,15 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int number)
 {
-	_fixed_point_number = number;
-	std::cout << "Int int constructor called\n";
+	_fixed_point_number = number << _number_of_fractional_bits;
+	std::cout << "Int constructor called\n";
 }
 
 Fixed::Fixed(const float number)
 {
-	_fixed_point_number = (int)number;
-	std::cout << "Float constructor called" << _fixed_point_number << std::endl;
-	
+
+	_fixed_point_number = static_cast<int>(number * (1 << _number_of_fractional_bits));
+	std::cout << "Float constructor called" << std::endl;
 }
 
 
@@ -53,7 +54,6 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called\n";
 	return (_fixed_point_number);
 }
 
@@ -64,5 +64,16 @@ void Fixed::setRawBits(int const raw)
 
 float Fixed::toFloat(void) const
 {
-	return ((float)_fixed_point_number);
+	return (static_cast<float>(_fixed_point_number) / (1 << _number_of_fractional_bits));
 }
+
+int Fixed::toInt(void) const
+{
+	return (_fixed_point_number >> _number_of_fractional_bits);
+}
+
+std::ostream &operator<<(std::ostream &os, Fixed const &fixed)
+{
+    os << fixed.toFloat();
+    return os;
+ }
