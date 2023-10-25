@@ -6,7 +6,7 @@
 /*   By: cgodecke <cgodecke@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 09:52:16 by cgodecke          #+#    #+#             */
-/*   Updated: 2023/10/25 10:56:23 by cgodecke         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:19:41 by cgodecke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 const int Fixed::_number_of_fractional_bits = 8;
 
 // Constructors
-Fixed::Fixed()
+Fixed::Fixed() : _fixed_point_number(0)
 {
 	std::cout << "Default constructor called\n";
 }
