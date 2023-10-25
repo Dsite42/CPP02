@@ -6,7 +6,7 @@
 #    By: cgodecke <cgodecke@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 15:39:27 by cgodecke          #+#    #+#              #
-#    Updated: 2023/10/24 16:18:25 by cgodecke         ###   ########.fr        #
+#    Updated: 2023/10/25 10:11:32 by cgodecke         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,11 @@ NAME = My_First_Class_in_Orthodox_Canonical_Form
 
 all: $(NAME)
 
-
 $(NAME):$(OBJFILES)
 	$(C++) $(C++_FLAGS) $(OBJFILES) -o $(NAME) 
+
+%.o: %.cpp
+	$(C++) $(C++_FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJFILES)
