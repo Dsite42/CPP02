@@ -6,7 +6,7 @@
 /*   By: cgodecke <cgodecke@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 09:52:16 by cgodecke          #+#    #+#             */
-/*   Updated: 2023/10/06 17:56:44 by cgodecke         ###   ########.fr       */
+/*   Updated: 2023/10/25 11:23:47 by cgodecke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 const int Fixed::_number_of_fractional_bits = 8;
 
-Fixed::Fixed()
+// Constructors
+Fixed::Fixed() : _fixed_point_number(0)
 {
 	//std::cout << "Default constructor called\n";
 }
@@ -52,6 +53,7 @@ Fixed::~Fixed()
 	//std::cout << "Deconstructor called\n";
 }
 
+// Member functions
 int Fixed::getRawBits(void) const
 {
 	return (_fixed_point_number);
@@ -72,6 +74,33 @@ int Fixed::toInt(void) const
 	return (_fixed_point_number >> _number_of_fractional_bits);
 }
 
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return (a);
+	return (b);	
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a > b)
+		return (a);
+	return (b);	
+}
 
 // Overload operators
 bool Fixed::operator>(const Fixed &other) const
@@ -148,34 +177,6 @@ Fixed Fixed::operator--(int)
 	Fixed tmp(*this);
 	--(*this);
 	return (tmp);
-}
-
-Fixed &Fixed::min(Fixed &a, Fixed &b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-Fixed &Fixed::max(Fixed &a, Fixed &b)
-{
-	if (a > b)
-		return (a);
-	return (b);	
-}
-
-const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
-{
-	if (a > b)
-		return (a);
-	return (b);	
 }
 
 std::ostream &operator<<(std::ostream &os, Fixed const &fixed)
