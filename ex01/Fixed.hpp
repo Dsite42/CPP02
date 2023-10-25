@@ -6,7 +6,7 @@
 /*   By: cgodecke <cgodecke@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 09:52:36 by cgodecke          #+#    #+#             */
-/*   Updated: 2023/10/06 11:34:51 by cgodecke         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:56:12 by cgodecke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,22 @@
 class Fixed
 {
 	private:
-		int _fixed_point_number;
-		static const int _number_of_fractional_bits;
+		int					_fixed_point_number;
+		static const int	_number_of_fractional_bits;
 	public:
+		// Constructors
 		Fixed();
 		Fixed(const int number);
 		Fixed(const float number);
 		Fixed(const Fixed &other);
 		Fixed &operator = (const Fixed &other);
 		~Fixed();
-		int getRawBits(void) const;
-		void setRawBits(int const raw);
-		float toFloat(void) const;
-		int toInt(void) const;
+
+		// Member functions
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+		float	toFloat(void) const;
+		int		toInt(void) const;
 
 };
 

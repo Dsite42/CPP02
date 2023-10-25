@@ -6,7 +6,7 @@
 /*   By: cgodecke <cgodecke@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 09:52:16 by cgodecke          #+#    #+#             */
-/*   Updated: 2023/10/06 11:34:01 by cgodecke         ###   ########.fr       */
+/*   Updated: 2023/10/25 10:56:23 by cgodecke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 const int Fixed::_number_of_fractional_bits = 8;
 
+// Constructors
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called\n";
@@ -32,7 +33,6 @@ Fixed::Fixed(const float number)
 	_fixed_point_number = static_cast<int>(number * (1 << _number_of_fractional_bits));
 	std::cout << "Float constructor called" << std::endl;
 }
-
 
 Fixed::Fixed(const Fixed &other)
 {
@@ -52,6 +52,7 @@ Fixed::~Fixed()
 	std::cout << "Deconstructor called\n";
 }
 
+// Member functions
 int Fixed::getRawBits(void) const
 {
 	return (_fixed_point_number);
